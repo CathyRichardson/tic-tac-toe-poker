@@ -32,26 +32,26 @@ function getWinner() {
         && gameProgress[2] === gameProgress[5]
         && gameProgress[2] === gameProgress[8]) {
         return gameProgress[2];
-    }   
+    }
     if (gameProgress[0] !== undefined
         && gameProgress[0] === gameProgress[4]
         && gameProgress[0] === gameProgress[8]) {
         return gameProgress[0];
-    } 
+    }
     if (gameProgress[2] !== undefined
         && gameProgress[2] === gameProgress[4]
         && gameProgress[2] === gameProgress[6]) {
-              return gameProgress[2];
-    } 
+        return gameProgress[2];
+    }
     return;
 }
 
-function reset () {
+function reset() {
     for (var i = 0; i < 9; i++) {
-        let box = document.getElementById(id);
-        box.innerText = '';
+        document.getElementById(i).innerText = '';
     }
     gameProgress = [];
+    document.getElementById("player").innerText = "X";
 }
 
 
@@ -70,6 +70,9 @@ function play(id) {
     let playerSpan = document.getElementById("player");
     let currentPlayer = playerSpan.innerText;
     let boxClicked = document.getElementById(id);
+    if (boxClicked.innerText) {
+        return; // box is used so does nothing
+    }
     boxClicked.innerText = currentPlayer;
     gameProgress[id] = currentPlayer;
 
@@ -82,6 +85,7 @@ function play(id) {
 
     if (isCatsGame()) {
         alert("Cat's game!")
+        reset();
         return;
     }
 
