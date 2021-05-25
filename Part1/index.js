@@ -46,6 +46,14 @@ function getWinner() {
     return;
 }
 
+function reset () {
+    for (var i = 0; i < 9; i++) {
+        let box = document.getElementById(id);
+        box.innerText = '';
+    }
+    gameProgress = [];
+}
+
 
 function isCatsGame() {
     let catsGame = true;
@@ -68,6 +76,7 @@ function play(id) {
     let winner = getWinner()
     if (winner) {
         alert(`${winner} wins!`)
+        reset();
         return;
     }
 
@@ -84,5 +93,6 @@ function play(id) {
 
 
 }
+
 
 
